@@ -57,7 +57,7 @@ windows_zipfile unzipPath.to_s do
 end
 
 env "TELELOGIC_LICENSE_FILE" do
-  action modify
+  action :modify
   key_name "TELELOGIC_LICENSE_FILE"
   value node['rhapsody-windows']['license_variable']
 end

@@ -15,6 +15,8 @@ default['rhapsody-windows'] =
     :path_preamble => "/sdfdl/v2/fulfill/CN5IJML/Xa.2/Xb.GUsb5m8rB11lxenD7rjhwY0W_pmojqGLlqi-8vvZank/Xc.CN5IJML",
     :path_suffix => "/Xd./Xf.LPR.D1VC/Xg.8266743/Xi.RATLe-RHAPDEV-EVAL/XY.regsrvs/XZ.Mv1Tmh4owj5-DKW-yV04Yihhxs8",
     
+    :query => {},
+      
     :unzip_to => "/tmp",
     
     :license_variable => "27000@rlia-tls.atsodius.com" 

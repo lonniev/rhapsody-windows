@@ -26,23 +26,23 @@
 require 'uri'
 
 # form the URL to the medium file
-query = node['rhapsody-windows']['query'].map{ |k,v|
+query = node['rhapsody-windows'][:query].map{ |k,v|
   [CGI.escape(k.to_s), "=", CGI.escape(v.to_s)]
 }.map( &:join ).join( "&" )
   
-filename_woext = "#{node['rhapsody-windows']['product']}_#{node['rhapsody-windows']['arch']}"
-filename = "#{filename_woext}.#{node['rhapsody-windows']['compression']}"
+filename_woext = "#{node['rhapsody-windows'][:product]}_#{node['rhapsody-windows'][:version]}_#{node['rhapsody-windows'][:arch]}"
+filename = "#{filename_woext}.#{node['rhapsody-windows'][:compression]}"
   
 download_uri = URI::Generic.build(
-  :scheme => node['rhapsody-windows']['scheme'], 
-  :host => node['rhapsody-windows']['host'],
-  :path => "#{node['rhapsody-windows']['path_preamble']}/" \
+  :scheme => node['rhapsody-windows'][:scheme], 
+  :host => node['rhapsody-windows'][:host],
+  :path => "#{node['rhapsody-windows'][:path_preamble]}/" \
     + "#{filename}" \
-    + "#{node['rhapsody-windows']['path_suffix']}/" \
+    + "#{node['rhapsody-windows'][:path_suffix]}/" \
     + "#{filename}"   
     )
 
-unzipPath = Pathname( node['rhapsody-windows']['unzip_to'] )
+unzipPath = Pathname( node['rhapsody-windows'][:unzip_to] )
 
 directory unzipPath.to_s do
   action :create
@@ -59,5 +59,5 @@ end
 env "TELELOGIC_LICENSE_FILE" do
   action :modify
   key_name "TELELOGIC_LICENSE_FILE"
-  value node['rhapsody-windows']['license_variable']
+  value node['rhapsody-windows'][:license_variable]
 end
